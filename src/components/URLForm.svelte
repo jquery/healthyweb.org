@@ -14,7 +14,7 @@
   // RUNTIME environment variable
   export let latest: string
 
-  const action = '/detect.json'
+  const action = '/api/detect'
   const method = 'POST'
 
   let submitting = false
@@ -41,12 +41,12 @@
         body: JSON.stringify({ url })
       })
       if (res.ok) {
-        const json = await res.json()
+        const json: { message: string; version: string } = await res.json()
         message = json.message
         version = json.version
       } else {
         try {
-          const json = await res.json()
+          const json: { message: string } = await res.json()
           message = json.message
         } catch (e) {
           message = res.statusText

@@ -19,6 +19,7 @@ export default [
     rules: {
       // Turns off rules that conflict with Prettier
       ...prettierConfig.rules,
+      '@typescript-eslint/no-non-null-assertion': 'error',
       'tailwindcss/classnames-order': 'error',
       'tailwindcss/enforces-negative-arbitrary-values': 'error',
       'tailwindcss/enforces-shorthand': 'error',

@@ -1,6 +1,8 @@
 #:schema node_modules/wrangler/config-schema.json
-name = "jquery-detect-cloudflare"
-compatibility_date = "2024-04-23"
+name = "healthyweb"
+compatibility_date = "2024-04-19"
+compatibility_flags = [ "nodejs_compat" ]
+
 pages_build_output_dir = "./dist"
 send_metrics = false
 

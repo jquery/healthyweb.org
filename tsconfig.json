@@ -1,5 +1,6 @@
 {
   "extends": "astro/tsconfigs/strict",
+  "exclude": ["node_modules"],
   "compilerOptions": {
     "types": ["@cloudflare/workers-types/2023-07-01"]
   }

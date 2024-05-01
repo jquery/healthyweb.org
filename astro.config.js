@@ -9,6 +9,7 @@ export default defineConfig({
   site: 'https://healthyweb.org',
   output: 'server',
   adapter: cloudflare({
+    imageService: 'compile',
     platformProxy: {
       enabled: true
     }

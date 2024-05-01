@@ -1,7 +1,13 @@
 /// <reference path="../.astro/types.d.ts" />
 /// <reference types="astro/client" />
-type Runtime = import("@astrojs/cloudflare").Runtime<Env>;
+
+type BrowserWorker = import('@cloudflare/workers-types').BrowserWorker
+type ENV = {
+  BROWSER: BrowserWorker
+}
+
+type Runtime = import('@astrojs/cloudflare').Runtime<ENV>
 
 declare namespace App {
-	interface Locals extends Runtime {}
+  interface Locals extends Runtime {}
 }
