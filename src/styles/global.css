@@ -1,0 +1,115 @@
+@tailwind components;
+
+@layer components {
+  /* Links */
+  [class*='link'] {
+    @apply cursor-pointer transition-[color,opacity,text-decoration-color] duration-100;
+    @apply font-normal no-underline decoration-1 underline-offset-2;
+  }
+
+  /* Primary link */
+  .link-primary {
+    @apply text-primary decoration-primary;
+    @apply visited:text-primary/95 visited:decoration-primary/95;
+    @apply hover:text-primary-hover;
+    @apply active:text-primary-active;
+  }
+
+  /* White link */
+  .link-white {
+    @apply text-white decoration-white;
+    @apply visited:text-white/95 visited:decoration-white/95;
+    @apply hover:text-white-hover;
+    @apply active:text-white-active;
+  }
+
+  /* Inputs */
+  .input {
+    @apply h-input w-full bg-white text-left text-black;
+    @apply border-2 border-transparent placeholder:text-gray-500;
+  }
+  .input:focus {
+    @apply border-primary outline-none;
+  }
+  .input[disabled],
+  .input[readonly] {
+    @apply pointer-events-none;
+  }
+
+  /* Global button styles minus background and borders */
+  .btn {
+    @apply relative flex shrink-0 items-center justify-center bg-transparent text-center;
+    @apply border border-transparent text-base;
+    @apply gap-2 whitespace-nowrap no-underline;
+    @apply transition-[background-color,border-color,color,opacity,transform] duration-100;
+  }
+  .btn:active:not([disabled]):not([aria-disabled='true']) {
+    @apply shadow-inset;
+  }
+  .btn,
+  .btn:visited {
+    @apply text-white;
+  }
+
+  /* Disabled state */
+  .btn[disabled],
+  .btn[aria-disabled='true'],
+  [class*='link'][disabled] {
+    @apply pointer-events-none opacity-40;
+  }
+
+  .btn[data-submitting='true'] {
+    @apply cursor-wait opacity-90;
+  }
+
+  /* Primary Button */
+  .btn-primary,
+  .btn-primary:visited,
+  .btn-primary[type] {
+    @apply border-primary bg-primary;
+  }
+  .btn-primary:hover:not([disabled]):not([aria-disabled='true']) {
+    @apply border-primary-hover bg-primary-hover;
+  }
+  .btn-primary:active:not([disabled]):not([aria-disabled='true']) {
+    @apply border-primary-active bg-primary-active;
+  }
+}
+
+/* Add these after components so they can override default component styles */
+@tailwind base;
+@tailwind utilities;
+@layer base {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+  h1 {
+    @apply text-4xl lg:text-5xl lg:leading-[1.4];
+  }
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+  h4 {
+    @apply text-lg lg:text-xl;
+  }
+  h5 {
+    @apply text-base;
+  }
+  h6 {
+    @apply text-sm;
+  }
+  label {
+    @apply font-bold;
+  }
+  label[for] {
+    @apply cursor-pointer;
+  }
+}
