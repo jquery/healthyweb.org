@@ -9,10 +9,7 @@ interface RespondWithProps {
   version?: string
 }
 
-export async function POST({ locals, request, redirect }: APIContext) {
-  const { BROWSER } = locals.runtime.env
-
-  console.log(BROWSER)
+export async function POST({ request, redirect }: APIContext) {
   let url
   const contentType = request.headers.get('Content-Type')
   if (contentType === 'application/json') {
