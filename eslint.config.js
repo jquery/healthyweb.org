@@ -6,7 +6,7 @@ import tseslint from 'typescript-eslint'
 
 export default [
   {
-    ignores: ['.astro', 'dist', 'src/env.d.ts']
+    ignores: ['.astro', '.wrangler', 'dist', 'src/env.d.ts']
   },
   ...tseslint.config(
     eslint.configs.recommended,

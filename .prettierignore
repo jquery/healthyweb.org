@@ -1,2 +1,4 @@
 .astro
+.wrangler
 dist
+worker-configuration.d.ts

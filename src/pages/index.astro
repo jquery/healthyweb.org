@@ -11,10 +11,13 @@ import healthImg from '../images/health.svg'
 import shieldImg from '../images/shield.svg'
 import Header from '../components/Header.svelte'
 
-const message = Astro.url.searchParams.get('message') || undefined
-const url = Astro.url.searchParams.get('url') || ''
-const latest = process.env.LATEST_JQUERY_VERSION!
-const version = Astro.url.searchParams.get('version')
+const { searchParams } = Astro.url
+const { env } = Astro.locals.runtime
+
+const message = searchParams.get('message') || undefined
+const url = searchParams.get('url') || ''
+const latest = env.LATEST_JQUERY_VERSION
+const version = searchParams.get('version')
 ---
 
 <Layout description={SITE_DESCRIPTION} title={SITE_TITLE}>

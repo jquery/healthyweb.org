@@ -1,6 +1,3 @@
-// import getVersion from '../../utils/getVersion'
-// import normalizeUrl from '../../utils/normalizeUrl'
-
 import type { APIContext } from 'astro'
 
 interface RespondWithProps {
@@ -9,7 +6,7 @@ interface RespondWithProps {
   version?: string
 }
 
-export async function POST({ request, redirect }: APIContext) {
+export async function POST({ locals, request, redirect }: APIContext) {
   let url
   const contentType = request.headers.get('Content-Type')
   if (contentType === 'application/json') {
@@ -59,47 +56,33 @@ export async function POST({ request, redirect }: APIContext) {
     })
   }
 
-  // let normalizedUrl: URL
-  // try {
-  //   normalizedUrl = normalizeUrl(url)
-  // } catch {
-  //   console.log(`Invalid URL ${url}`)
-  //   return respondWith(400, {
-  //     message: 'Invalid URL. Please check the URL and try again.',
-  //     url
-  //   })
-  // }
+  const { env } = locals.runtime
 
-  // let version
-  // try {
-  //   version = await getVersion(normalizedUrl)
-  // } catch (error) {
-  //   const message = ((error as Error)?.message || '').toLowerCase()
+  let response
+  try {
+    response = await env.HEALTHYWEB_WORKER.fetch('https://healthyweb.org', {
+      method: 'POST',
+      body: JSON.stringify({ url }),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+  } catch (error) {
+    console.error(error)
+    return respondWith(500, {
+      message: 'Error detecting version. Please try again later.'
+    })
+  }
 
-  //   // Better message for URL not found
-  //   if (message.includes('not_resolved')) {
-  //     console.log(`404: Not Found for ${url}`)
-  //     return respondWith(404, {
-  //       message: '404: Not Found. Please check the URL.',
-  //       url
-  //     })
-  //   }
+  if (!response.ok) {
+    console.error(response)
+    return respondWith(response.status || 500, {
+      message: 'Error detecting version. Please try again later.'
+    })
+  }
 
-  //   if (message.includes('timed out') || message.includes('timeout')) {
-  //     console.log(`Timeout loading ${url}`)
-  //     return respondWith(200, {
-  //       message: 'Timed out waiting for page to load. Please try again.'
-  //     })
-  //   }
-
-  //   console.log(`Error loading ${url}`)
-  //   console.error(error)
-
-  //   return respondWith(500, {
-  //     message: 'Error detecting version. Please try again later.'
-  //   })
-  // }
-  const version = '3.7.0'
+  const data: RespondWithProps = await response.json()
+  const version = data.version
 
   console.log(
     version
@@ -107,5 +90,5 @@ export async function POST({ request, redirect }: APIContext) {
       : `No version detected for ${url}`
   )
 
-  return respondWith(200, { url, version })
+  return respondWith(200, data)
 }

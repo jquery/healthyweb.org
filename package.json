@@ -6,41 +6,43 @@
     "astro": "astro",
     "build": "astro check && astro build",
     "deploy": "astro build && wrangler pages deploy",
-    "dev": "cross-env LATEST_JQUERY_VERSION=3.7.1 astro dev",
+    "dev": "astro dev",
     "format": "eslint . --fix && prettier --write .",
     "lint": "concurrently \"eslint .\" \"prettier --check .\" \"npm run typescript\"",
     "preview": "astro build && wrangler pages dev",
     "start": "npm run dev",
     "test": "npm run lint",
-    "types": "wrangler types"
+    "types": "wrangler types",
+    "typescript": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@astrojs/check": "^0.6.0",
+    "@astrojs/check": "^0.7.0",
     "@astrojs/cloudflare": "^10.2.6",
     "@astrojs/svelte": "^5.4.0",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/roboto-slab": "^5.0.20",
-    "astro": "^4.8.3",
+    "astro": "^4.8.6",
     "svelte": "^4.2.17",
     "tailwindcss": "^3.4.3",
     "typescript": "^5.4.5"
   },
   "devDependencies": {
-    "@cloudflare/puppeteer": "^0.0.7",
+    "@cloudflare/puppeteer": "^0.0.8",
     "@cloudflare/workers-types": "^4.20240512.0",
-    "@eslint/js": "^9.2.0",
+    "@eslint/js": "^9.3.0",
+    "concurrently": "^8.2.2",
     "cross-env": "^7.0.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-astro": "^1.2.0",
     "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-tailwindcss": "^3.15.1",
+    "eslint-plugin-tailwindcss": "^3.15.2",
     "prettier": "^3.2.5",
     "prettier-plugin-astro": "^0.13.0",
     "prettier-plugin-organize-imports": "^3.2.4",
     "prettier-plugin-svelte": "^3.2.3",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "typescript-eslint": "^7.9.0",
-    "wrangler": "^3.56.0"
+    "typescript-eslint": "^7.10.0",
+    "wrangler": "^3.57.1"
   }
 }
