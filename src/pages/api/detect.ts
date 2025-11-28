@@ -60,6 +60,8 @@ export async function POST({ locals, request, redirect }: APIContext) {
 
   let response
   try {
+    // To test locally, switch this to a regular fetch to
+    // the worker running on localhost.
     response = await env.HEALTHYWEB_WORKER.fetch('https://healthyweb.org', {
       method: 'POST',
       body: JSON.stringify({ url }),

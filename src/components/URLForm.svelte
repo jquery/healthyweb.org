@@ -1,24 +1,26 @@
 <script lang="ts">
   import loadingImg from '../images/loading.svg'
-  import { index } from '../strings'
+  import { index } from '../strings.js'
   import HealthyStatus from './HealthyStatus.svelte'
   import UnhealthyStatus from './UnhealthyStatus.svelte'
 
-  export let url: string = ''
-  export let message: string | undefined
-
-  // null means no version detected
-  export let version: string | null = ''
-
-  // The latest version is passed from a
-  // RUNTIME environment variable
-  export let latest: string
+  let {
+    url = $bindable(''),
+    message = $bindable(undefined),
+    version = $bindable(''),
+    latest
+  }: {
+    url?: string
+    message?: string | undefined
+    version?: string | null
+    latest: string
+  } = $props()
 
   const action = '/api/detect'
   const method = 'POST'
 
-  let submitting = false
-  let invalid = version === null || !!message
+  let submitting = $state(false)
+  let invalid = $state(version === null || !!message)
 
   async function submit() {
     if (!url) {
@@ -66,7 +68,7 @@
 
 {#if version}
   <div
-    class="flex max-w-screen-lg flex-col items-center justify-center gap-5 text-center lg:-mt-20"
+    class="flex max-w-5xl flex-col items-center justify-center gap-5 text-center lg:-mt-20"
   >
     {#if version === latest}
       <HealthyStatus />
@@ -80,9 +82,12 @@
     {method}
     class="flex w-full flex-col items-center justify-center gap-12"
     novalidate
-    on:submit|preventDefault={submit}
+    onsubmit={(e) => {
+      e.preventDefault()
+      submit()
+    }}
   >
-    <h1 class="max-w-screen-lg text-center drop-shadow-md">
+    <h1 class="max-w-5xl text-center drop-shadow-md">
       {index.header}
     </h1>
     <div class="flex w-full max-w-screen-sm flex-row">
@@ -99,7 +104,7 @@
         id="url"
         placeholder="https://"
         type="url"
-        on:paste={(e) => {
+        onpaste={(e) => {
           const value = e.clipboardData?.getData('text')
           if (value) {
             url = value
