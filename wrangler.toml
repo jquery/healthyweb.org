@@ -1,7 +1,9 @@
 #:schema node_modules/wrangler/config-schema.json
 name = "healthyweb"
 compatibility_date = "2025-11-17"
-compatibility_flags = ["nodejs_compat"]
+# disable_nodejs_process_v2 is needed for Astro support
+# See https://github.com/withastro/astro/issues/14511
+compatibility_flags = ["nodejs_compat", "disable_nodejs_process_v2"]
 
 pages_build_output_dir = "./dist"
 send_metrics = false
