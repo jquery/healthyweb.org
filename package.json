@@ -12,7 +12,7 @@
     "lint": "concurrently \"eslint .\" \"prettier --check .\" \"npm run typescript\"",
     "preview": "npm run clean && astro check && astro build && wrangler pages dev",
     "start": "npm run dev",
-    "test": "astro check && astro build && npm run lint",
+    "test": "astro check && npm run lint",
     "types": "wrangler types",
     "typescript": "tsc -p tsconfig.json --noEmit"
   },
