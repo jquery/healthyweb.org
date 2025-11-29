@@ -1,4 +1,77 @@
-@tailwind components;
+@import 'tailwindcss';
+
+@theme {
+  --color-background: #001344;
+  --color-background-light: #002c65;
+  --color-primary: #80bd42;
+  --color-primary-hover: #7ab13a;
+  --color-primary-active: #6c9c34;
+  --color-white: #ffffff;
+  --color-white-hover: #e5e5e5;
+  --color-white-active: #cccccc;
+  --color-error: #ed1d2b;
+  --color-success: #00b836;
+
+  --drop-shadow-md: 0 4px 4px rgba(0, 0, 0, 0.25);
+
+  --font-sans:
+    'Roboto Slab', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+
+  --height-input: 50px;
+
+  --shadow-inset: inset 0 0 0.5rem 1px rgb(0 0 0 / 0.25);
+
+  --background-image-header: url(/bg.webp);
+}
+
+@layer base {
+  html {
+    color: #fff;
+    background-color: #001344;
+    height: 100%;
+    overflow-y: auto;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+  }
+  body {
+    height: 100%;
+    min-height: 100vh;
+    min-height: 100dvh;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-bold;
+  }
+  h1 {
+    @apply text-4xl lg:text-5xl lg:leading-[1.4];
+  }
+  h2 {
+    @apply text-3xl lg:text-4xl;
+  }
+  h3 {
+    @apply text-2xl lg:text-3xl;
+  }
+  h4 {
+    @apply text-lg lg:text-xl;
+  }
+  h5 {
+    @apply text-base;
+  }
+  h6 {
+    @apply text-sm;
+  }
+  label {
+    @apply font-bold;
+  }
+  label[for] {
+    @apply cursor-pointer;
+  }
+}
 
 @layer components {
   /* Links */
@@ -73,43 +146,5 @@
   }
   .btn-primary:active:not([disabled]):not([aria-disabled='true']) {
     @apply border-primary-active bg-primary-active;
-  }
-}
-
-/* Add these after components so they can override default component styles */
-@tailwind base;
-@tailwind utilities;
-@layer base {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    @apply font-bold;
-  }
-  h1 {
-    @apply text-4xl lg:text-5xl lg:leading-[1.4];
-  }
-  h2 {
-    @apply text-3xl lg:text-4xl;
-  }
-  h3 {
-    @apply text-2xl lg:text-3xl;
-  }
-  h4 {
-    @apply text-lg lg:text-xl;
-  }
-  h5 {
-    @apply text-base;
-  }
-  h6 {
-    @apply text-sm;
-  }
-  label {
-    @apply font-bold;
-  }
-  label[for] {
-    @apply cursor-pointer;
   }
 }

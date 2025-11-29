@@ -1,7 +1,7 @@
 {
   "name": "healthyweb.org",
   "type": "module",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "scripts": {
     "astro": "astro",
     "build": "astro check && astro build",
@@ -16,33 +16,32 @@
     "typescript": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
-    "@astrojs/cloudflare": "^10.2.6",
-    "@astrojs/svelte": "^5.4.0",
-    "@astrojs/tailwind": "^5.1.0",
-    "@fontsource/roboto-slab": "^5.0.20",
-    "astro": "^4.8.6",
-    "svelte": "^4.2.17",
-    "tailwindcss": "^3.4.3",
-    "typescript": "^5.4.5"
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/cloudflare": "^12.6.12",
+    "@astrojs/svelte": "^7.2.2",
+    "@fontsource/roboto-slab": "^5.2.8",
+    "astro": "^5.16.2",
+    "svelte": "^5.45.2",
+    "tailwindcss": "^4.1.17",
+    "typescript": "^5.9.3"
   },
   "devDependencies": {
-    "@cloudflare/puppeteer": "^0.0.8",
-    "@cloudflare/workers-types": "^4.20240512.0",
-    "@eslint/js": "^9.3.0",
-    "concurrently": "^8.2.2",
-    "cross-env": "^7.0.3",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
-    "eslint-plugin-astro": "^1.2.0",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-tailwindcss": "^3.15.2",
-    "prettier": "^3.2.5",
-    "prettier-plugin-astro": "^0.13.0",
-    "prettier-plugin-organize-imports": "^3.2.4",
-    "prettier-plugin-svelte": "^3.2.3",
-    "prettier-plugin-tailwindcss": "^0.5.14",
-    "typescript-eslint": "^7.10.0",
-    "wrangler": "^3.57.1"
+    "@cloudflare/puppeteer": "^1.0.4",
+    "@cloudflare/workers-types": "^4.20251128.0",
+    "@eslint/js": "^9.39.1",
+    "@tailwindcss/vite": "^4.1.17",
+    "@trivago/prettier-plugin-sort-imports": "^6.0.0",
+    "concurrently": "^9.2.1",
+    "cross-env": "^10.1.0",
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-astro": "^1.5.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "prettier": "^3.7.2",
+    "prettier-plugin-astro": "^0.14.1",
+    "prettier-plugin-svelte": "^3.4.0",
+    "prettier-plugin-tailwindcss": "^0.7.1",
+    "typescript-eslint": "^8.48.0",
+    "wrangler": "^4.51.0"
   }
 }
