@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { healthy } from '../strings.js'
   import checkmarkImg from '../images/checkmark.svg'
+  import { healthy } from '../strings.js'
 </script>
 
 <div
