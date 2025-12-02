@@ -4,7 +4,7 @@
 </script>
 
 <footer
-  class="mx-auto flex max-w-5xl flex-col items-center justify-center gap-8 px-5 pb-20 pt-12 text-center lg:flex-row lg:text-left"
+  class="mx-auto flex max-w-5xl flex-col items-center justify-center gap-8 px-5 pt-12 pb-20 text-center lg:flex-row lg:text-left"
 >
   <img
     alt="OpenJS Foundation Logo"
