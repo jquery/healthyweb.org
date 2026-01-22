@@ -21,7 +21,7 @@ send_metrics = false
 # Note: Use secrets to store sensitive data.
 # - https://developers.cloudflare.com/pages/functions/bindings/#secrets
 [vars]
-LATEST_JQUERY_VERSION = "3.7.1"
+LATEST_JQUERY_VERSION = "4.0.0"
 
 # Bind the Workers AI model catalog. Run machine learning models, powered by serverless GPUs, on Cloudflare’s global network
 # Docs: https://developers.cloudflare.com/pages/functions/bindings/#workers-ai
