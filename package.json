@@ -17,8 +17,8 @@
     "typescript": "tsc -p tsconfig.json --noEmit"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.2",
-    "@astrojs/cloudflare": "^12.6.5",
+    "@astrojs/check": "^0.9.6",
+    "@astrojs/cloudflare": "^12.6.12",
     "@astrojs/svelte": "^7.2.5",
     "@fontsource/roboto-slab": "^5.2.8",
     "astro": "^5.16.13",
