@@ -5,7 +5,13 @@ import tseslint from 'typescript-eslint'
 
 export default [
   {
-    ignores: ['.astro', '.wrangler', 'dist', 'src/env.d.ts']
+    ignores: [
+      '.astro',
+      '.wrangler',
+      'dist',
+      'src/env.d.ts',
+      'worker-configuration.d.ts'
+    ]
   },
   eslint.configs.recommended,
   ...tseslint.configs.recommended,
