@@ -1,6 +1,6 @@
 ---
 import Layout from '../layouts/Layout.astro'
-
+import { env } from 'cloudflare:workers'
 import { SITE_TITLE, SITE_DESCRIPTION } from '../constants.js'
 import { index } from '../strings.js'
 import Callout from '../components/Callout.svelte'
@@ -12,7 +12,6 @@ import shieldImg from '../images/shield.svg'
 import Header from '../components/Header.svelte'
 
 const { searchParams } = Astro.url
-const { env } = Astro.locals.runtime
 
 const message = searchParams.get('message') || undefined
 const url = searchParams.get('url') || ''
@@ -38,6 +37,6 @@ const version = searchParams.get('version')
       <Callout image={healthImg} description={index.callout3} />
     </div>
   </main>
-  <hr class="mx-auto h-[2px] w-[calc(100%-4rem)] max-w-[900px] bg-white" />
+  <hr class="mx-auto h-0.5 w-[calc(100%-4rem)] max-w-225 bg-white" />
   <Footer />
 </Layout>

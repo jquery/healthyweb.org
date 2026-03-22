@@ -6,7 +6,7 @@ interface RespondWithProps {
   version?: string
 }
 
-export async function POST({ locals, request, redirect }: APIContext) {
+export async function POST({ request, redirect }: APIContext) {
   let url
   const contentType = request.headers.get('Content-Type')
   if (contentType === 'application/json') {
@@ -56,14 +56,12 @@ export async function POST({ locals, request, redirect }: APIContext) {
     })
   }
 
-  const { env } = locals.runtime
-
   let response
   try {
     // To test locally, switch this to a regular fetch to
     // the worker running on localhost.
-    // response = await fetch('http://localhost:8787', {
-    response = await env.HEALTHYWEB_WORKER.fetch('https://healthyweb.org', {
+    response = await fetch('http://localhost:8787', {
+      // response = await env.HEALTHYWEB_WORKER.fetch('https://healthyweb.org', {
       method: 'POST',
       body: JSON.stringify({ url }),
       headers: {
