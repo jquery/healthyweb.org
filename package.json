@@ -31,7 +31,7 @@
     "@eslint/js": "^9.39.4",
     "@tailwindcss/vite": "^4.2.2",
     "@trivago/prettier-plugin-sort-imports": "^6.0.2",
-    "concurrently": "^9.2.1",
+    "concurrently": "^9.2.4",
     "cross-env": "^10.1.0",
     "eslint": "^9.39.4",
     "eslint-config-prettier": "^10.1.8",
