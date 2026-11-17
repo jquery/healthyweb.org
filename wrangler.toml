@@ -8,7 +8,7 @@ send_metrics = false
 
 # Docs: https://developers.cloudflare.com/workers/configuration/environment-variables/
 [vars]
-LATEST_JQUERY_VERSION = "4.0.0"
+LATEST_JQUERY_VERSION = "4.1.0"
 
 # Bind another Worker service. Use this binding to call another Worker without network overhead.
 # Docs: https://developers.cloudflare.com/workers/runtime-apis/bindings/service-bindings/
