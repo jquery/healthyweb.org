@@ -1,4 +1,5 @@
 import type { APIContext } from 'astro'
+import { env } from 'cloudflare:workers'
 
 interface RespondWithProps {
   message?: string
@@ -56,18 +57,20 @@ export async function POST({ request, redirect }: APIContext) {
     })
   }
 
+  const init = {
+    method: 'POST',
+    body: JSON.stringify({ url }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  }
+
   let response
   try {
-    // To test locally, switch this to a regular fetch to
-    // the worker running on localhost.
-    response = await fetch('http://localhost:8787', {
-      // response = await env.HEALTHYWEB_WORKER.fetch('https://healthyweb.org', {
-      method: 'POST',
-      body: JSON.stringify({ url }),
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
+    // In dev, use the worker running on localhost (`npm start` in healthyweb-worker)
+    response = import.meta.env.DEV
+      ? await fetch('http://localhost:8787', init)
+      : await env.HEALTHYWEB_WORKER.fetch('https://healthyweb.org', init)
   } catch (error) {
     console.error(error)
     return respondWith(500, {
