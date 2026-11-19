@@ -1,0 +1,46 @@
+name: Deploy site
+
+on:
+  push:
+    branches: ['main']
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# Queue deploys rather than cancelling one mid-flight
+concurrency:
+  group: 'deploy'
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    # Skip forks and manual runs from other branches
+    if: github.repository == 'jquery/healthyweb.org' && github.ref == 'refs/heads/main'
+    # Secrets live in this environment, which only main may deploy to
+    environment: production
+    runs-on: ubuntu-latest
+    env:
+      NODE_VERSION: 24.x
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run tests
+        run: npm test
+
+      - name: Build and deploy to Cloudflare
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+        run: npm run deploy

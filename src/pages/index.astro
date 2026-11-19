@@ -27,9 +27,7 @@ const version = searchParams.get('version')
     {latest}
     version={version === 'null' ? null : version || ''}
   />
-  <main
-    class="relative flex flex-col items-center justify-center gap-8 px-5 pt-12 pb-24 text-center lg:gap-16"
-  >
+  <main class="relative flex flex-col items-center justify-center gap-8 px-5 pt-12 pb-24 text-center lg:gap-16">
     <h2>{index.subheader}</h2>
     <div class="flex flex-col justify-center gap-16 md:flex-row lg:gap-32">
       <Callout image={graphImg} description={index.callout1} />
