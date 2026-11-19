@@ -16,6 +16,10 @@ concurrency:
 
 jobs:
   deploy:
+    # Skip forks and manual runs from other branches
+    if: github.repository == 'jquery/healthyweb.org' && github.ref == 'refs/heads/main'
+    # Secrets live in this environment, which only main may deploy to
+    environment: production
     runs-on: ubuntu-latest
     env:
       NODE_VERSION: 24.x
